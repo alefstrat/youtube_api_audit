@@ -14,6 +14,13 @@ with open('queries.json', 'r') as f:
 onetailed_span = 14  # determines how many days before and after focal date to collect; total span is 2x this value
 
 @schedule(max_iters=5, wait_time=5, time_unit="days")
+"""
+schedule params:
+
+max_iters: int, specifies how many times to run the collection
+wait_time: int, specifies how many time_unit to wait before the next collection
+time_unit: str, see scheduler.py for acceptable args
+"""
 def main():
         for topic in queries:
                 path = f"/data/{topic}"
