@@ -62,7 +62,6 @@ for topic in topics:
     ax = axs[hor_idx][ver_idx]
 
     xrange = np.array([(date - first_date).days for date in vid_ids.keys()])
-    # xrange = np.arange(0, len(diff_previous)*5, 5)
 
     ax.plot(xrange, diff_previous, '^', label=r"$\Delta$previous", color='tab:blue')
     ax.plot(xrange, diff_first, 'o', label=r"$\Delta$first", color='tab:orange')  # , linestyle=(0, (5, 10)))

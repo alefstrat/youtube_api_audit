@@ -15,8 +15,8 @@ def markov_transitions(data, order=1):
     for row in data:
         row = list(row)
         for i in range(len(row) - order):
-            state = tuple(row[i:i+order])          # current state (order-k)
-            next_state = row[i + order]            # state following the current state
+            state = tuple(row[i:i+order])
+            next_state = row[i + order]
             transition_counts[state][next_state] += 1
 
     # Normalize to probabilities

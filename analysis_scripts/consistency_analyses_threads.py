@@ -3,7 +3,6 @@ import os
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 from collections import OrderedDict
-import numpy as np
 from tqdm import tqdm
 import subprocess
 import pandas as pd

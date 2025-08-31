@@ -1,10 +1,8 @@
 import json
 import os
 import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
 from datetime import datetime
-from collections import OrderedDict, Counter
-import numpy as np
+from collections import OrderedDict
 import pandas as pd
 from pandas.plotting import parallel_coordinates
 
@@ -12,7 +10,6 @@ from pandas.plotting import parallel_coordinates
 def jaccard_index(set1, set2):
     overlap = len(set1.intersection(set2))
     total_n = len(set1.union(set2))
-    # total_n = np.min([len(set1), len(set2)])
     return overlap/total_n
 
 
@@ -22,7 +19,6 @@ path = "/data/"
 
 plt.style.use('seaborn-v0_8-whitegrid')
 fig, axs = plt.subplots(2, 3, figsize=(12, 8), sharey=True, sharex=True)
-# cmap = ListedColormap('turbo')
 
 hor_idx = 0
 ver_idx = 0
@@ -47,9 +43,6 @@ for topic in topics:
     curr_key = list(vid_ids.keys())[0]
 
     comps = 1
-    # print('-'*15+'\n')
-
-    # pd_dict = {'id': [], 't1': [], 't2': [], 'jaccard': []}
     pd_dict = {'id': [], 't-1': [], 't': [], 'jac_prev': [], 'jac_start': []}
 
     for date in vid_ids:
@@ -91,8 +84,6 @@ for topic in topics:
 
         print(f"{topic}: {len(common_start.union(totals_f2))}, Comp ID: {comps}")
 
-        # print(f"\n{topic}: Comparing {curr_key} and {date}. Totals: {len(totals_f1)}/{len(common_ids)} and {len(totals_f2)}/{len(common_ids)}")
-        # print(jaccard_index(totals_f1, totals_f2))
         pd_dict['id'].append(comps)
         pd_dict['t-1'].append(len(totals_f1)/len(common_ids))
         pd_dict['t'].append(len(totals_f2)/len(common_ids))
@@ -110,13 +101,9 @@ for topic in topics:
 
     if ver_idx == 0:
         ax.set_ylabel('API Coverage', fontsize=12)
-    # if hor_idx == axs.shape[0]-1:
-    #     ax.set_xlabel('Collection day', fontsize=12)
     ax.set_title(topic)
     ax.grid(alpha=0.5, color='grey', linestyle='--')
     ax.get_legend().remove()
-
-    # ax.legend(frameon=True, framealpha=0.1, facecolor='grey')
 
     hor_idx += 1
     if hor_idx == axs.shape[0]:

@@ -1,7 +1,6 @@
 import pandas as pd
 import json
-from datetime import datetime, timedelta, timezone
-from collections import OrderedDict
+from datetime import datetime, timedelta
 import os
 import statsmodels.formula.api as smf
 import isodate

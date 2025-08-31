@@ -21,7 +21,6 @@ def jaccard_index(set1, set2):
 warnings.filterwarnings("ignore")
 
 topics = ['blm', 'brexit', 'capriot', 'grammys', 'higgs', 'worldcup']
-# topics = ['capriot']
 
 path = "/data/"
 
@@ -74,6 +73,7 @@ for topic in topics:
 
     # merge all dates to compare
     topic_dfs_daily = pd.concat(list(topic_dfs_daily.values()), axis=1).loc[:, ~pd.concat(list(topic_dfs_daily.values()), axis=1).columns.duplicated()]
+
     # get hourly jaccard similarity between first and last collection; write it at the end so we can perform count averaging
     jac_sims = [jaccard_index(first, last) for first, last in zip(topic_dfs_daily.iloc[:, 0], topic_dfs_daily.iloc[:, -1])]
     topic_dfs_daily = topic_dfs_daily.applymap(len)
@@ -83,7 +83,6 @@ for topic in topics:
 
     topic_dfs_daily['avg_count'] = topic_dfs_daily.mean(axis=1, numeric_only=True)
     topic_dfs_daily['jaccard'] = jac_sims
-    # topic_dfs_hourly = topic_dfs_hourly.loc[topic_dfs_hourly['avg_count'] > 0]
 
     ax = axs[hor_idx][ver_idx]
 
@@ -100,10 +99,6 @@ for topic in topics:
     ax2.set_yticks(np.linspace(0, 1, 11))
     ax2.grid(False)
 
-    # sns.kdeplot(topic_dfs_hourly, y='jaccard', x='pubtime', fill=False, bw_adjust=0.01, ax=ax2, label='Jaccard similarity', color='red', common_norm=False, legend=False)
-    # ax2.set_ylim(0, 1)
-    # ax.get_legend().remove()
-
     if ver_idx == 0:
         ax.set_ylabel('Frequency', fontsize=12)
     elif ver_idx == 2:
@@ -115,8 +110,6 @@ for topic in topics:
     if ver_idx != 2:
         ax2.set_yticklabels([])
 
-    # ax.legend(frameon=True, framealpha=0.2, facecolor='grey')
-
     hor_idx += 1
     if hor_idx == axs.shape[0]:
         hor_idx = 0
@@ -124,11 +117,11 @@ for topic in topics:
 
 handles, labels = [], []
 
-h, l = ax.get_legend_handles_labels()  # Get handles and labels from ax
+h, l = ax.get_legend_handles_labels()
 handles.extend(h)
 labels.extend(l)
 
-h2, l2 = ax2.get_legend_handles_labels()  # Get handles and labels from ax2
+h2, l2 = ax2.get_legend_handles_labels()
 handles.extend(h2)
 labels.extend(l2)
 
