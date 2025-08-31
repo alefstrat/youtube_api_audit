@@ -1,0 +1,26 @@
+{
+    "grammys": {
+        "q": "grammy awards",
+        "focal_date": "2024-02-04T00:00:00Z"
+    },
+    "capriot": {
+        "q": "us capitol",
+        "focal_date": "2021-01-06T00:00:00Z"
+    },
+    "blm": {
+        "q": "black lives matter",
+        "focal_date": "2020-05-25T00:00:00Z"
+    },
+    "brexit": {
+        "q": "brexit referendum",
+        "focal_date": "2016-06-23T00:00:00Z"
+    },
+    "higgs": {
+        "q": "higgs boson",
+        "focal_date": "2012-07-04T00:00:00Z"
+    },
+    "worldcup": {
+        "q": "fifa world cup",
+        "focal_date": "2014-06-12T00:00:00Z"
+    }
+}
