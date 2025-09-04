@@ -8,4 +8,4 @@ Code and data for the paper "On YouTube Search API Use in Research"
 
 If you use any of the code or data in this repo, please cite the paper:
 
-Efstratiou, A. (2025). On YouTube Search API Use in Research. *Proceedings of the ACM Internet Measurement Conference*. DOI: [TBD]
+Alexandros Efstratiou. 2025. On YouTube Search API Use in Research. In Proceedings of the 2025 ACM Internet Measurement Conference (IMC ’25), October 28–31, 2025, Madison, WI, USA. ACM, New York, NY, USA, 9 pages. https://doi.org/10.1145/3730567.3764492
